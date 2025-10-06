@@ -1,0 +1,23 @@
+# Java / Maven / Spring Boot build files
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDE project files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+*.settings/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+logs/
+tmp/
