@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Personalized Planner — Input</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="logo">💪 Personalized Planner</div>
+      <div class="tag">Smart workout & meal plans — tailored for you</div>
+    </header>
+
+    <main class="card">
+      <div class="stepper" id="stepper">
+        <div class="step active" data-step="1"><span>1</span><small>Basic</small></div>
+        <div class="step" data-step="2"><span>2</span><small>Fitness</small></div>
+        <div class="step" data-step="3"><span>3</span><small>Diet</small></div>
+        <div class="step" data-step="4"><span>4</span><small>Equipment</small></div>
+      </div>
+
+      <form id="plannerForm" action="/generate" method="post" novalidate>
+        <!-- STEP 1 -->
+        <section class="form-step active" data-step="1" aria-hidden="false">
+          <h2>Basic Information</h2>
+
+          <div class="field">
+            <input name="name" id="name" type="text" required />
+            <label for="name">Full name</label>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <input name="age" id="age" type="number" min="12" required />
+              <label for="age">Age</label>
+            </div>
+
+            <div class="field">
+              <select name="sex" id="sex" required>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+              </select>
+              <label class="floating" for="sex">Sex</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <input name="heightCm" id="heightCm" type="number" step="0.1" required />
+              <label for="heightCm">Height (cm)</label>
+            </div>
+            <div class="field">
+              <input name="weightKg" id="weightKg" type="number" step="0.1" required />
+              <label for="weightKg">Weight (kg)</label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn ghost" data-next>Next</button>
+          </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="form-step" data-step="2" aria-hidden="true">
+          <h2>Fitness Info</h2>
+
+          <div class="field">
+            <select name="activityLevel" required>
+              <option value="SEDENTARY">Sedentary</option>
+              <option value="LIGHT">Light</option>
+              <option value="MODERATE" selected>Moderate</option>
+              <option value="ACTIVE">Active</option>
+              <option value="VERY_ACTIVE">Very Active</option>
+            </select>
+            <label class="floating">Activity Level</label>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <select name="experience" required>
+                <option value="BEGINNER" selected>Beginner</option>
+                <option value="INTERMEDIATE">Intermediate</option>
+                <option value="ADVANCED">Advanced</option>
+              </select>
+              <label class="floating">Experience</label>
+            </div>
+
+            <div class="field">
+              <select name="goal" required>
+                <option value="LOSE_FAT">Lose Fat</option>
+                <option value="MAINTAIN">Maintain</option>
+                <option value="GAIN_MUSCLE">Gain Muscle</option>
+              </select>
+              <label class="floating">Goal</label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn ghost" data-prev>Back</button>
+            <button type="button" class="btn" data-next>Next</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="form-step" data-step="3" aria-hidden="true">
+          <h2>Diet Preferences</h2>
+
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="vegetarian"> Vegetarian</label>
+            <label class="chip"><input type="checkbox" name="vegan"> Vegan</label>
+            <label class="chip"><input type="checkbox" name="lactoseFree"> Lactose-free</label>
+            <label class="chip"><input type="checkbox" name="glutenFree"> Gluten-free</label>
+            <label class="chip"><input type="checkbox" name="halal"> Halal</label>
+          </div>
+
+          <div class="field">
+            <input name="allergies" id="allergies" type="text">
+            <label for="allergies">Allergies (comma-separated)</label>
+          </div>
+
+          <div class="field">
+            <input name="preferredCuisines" id="preferredCuisines" type="text">
+            <label for="preferredCuisines">Preferred cuisines (comma-separated)</label>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn ghost" data-prev>Back</button>
+            <button type="button" class="btn" data-next>Next</button>
+          </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="form-step" data-step="4" aria-hidden="true">
+          <h2>Equipment & Schedule</h2>
+
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="hasGym"> Gym</label>
+            <label class="chip"><input type="checkbox" name="hasDumbbells"> Dumbbells</label>
+            <label class="chip"><input type="checkbox" name="hasResistanceBands"> Bands</label>
+            <label class="chip"><input type="checkbox" name="hasYogaMat"> Yoga Mat</label>
+            <label class="chip"><input type="checkbox" name="canRunOutside"> Can run outside</label>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <input name="workoutDaysPerWeek" type="number" min="2" max="6" value="4" required>
+              <label>Workout days / week</label>
+            </div>
+            <div class="field">
+              <input name="minutesPerWorkout" type="number" min="20" max="90" value="45" required>
+              <label>Minutes / workout</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <input name="dailyFoodBudget" type="number" step="0.1" value="250" required>
+            <label>Daily food budget (INR)</label>
+          </div>
+
+          <div class="field">
+            <input name="region" type="text" value="India">
+            <label>Region</label>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn ghost" data-prev>Back</button>
+            <button class="btn submit-btn" type="submit">Generate Plan</button>
+          </div>
+        </section>
+      </form>
+    </main>
+
+    <footer class="footer">
+      Made with ❤️ — IBM SkillBuild Intern Project
+    </footer>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
